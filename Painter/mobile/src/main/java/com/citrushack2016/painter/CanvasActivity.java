@@ -16,6 +16,8 @@ public class CanvasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_canvas);
 
+        CanvasView canvasView = (CanvasView) findViewById(R.id.canvas_view);
+
         //declare the FAB, link it to the layout
         final FloatingActionButton anchorFAB = (FloatingActionButton) findViewById(R.id.FAB_anchor);//initiates calibration functions for the watch
         final FloatingActionButton clearFAB = (FloatingActionButton) findViewById(R.id.FAB_clear);//clears the current canvas of points, resets activity to defaults. Does requires new calibration

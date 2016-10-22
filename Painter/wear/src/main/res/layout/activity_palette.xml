@@ -8,19 +8,14 @@
     tools:context="com.citrushack2016.painter.PaletteActivity"
     tools:deviceIds="wear">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_world"
-        app:layout_box="all" />
-
-    <TextView
-        android:id="@+id/clock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:textColor="@android:color/white"
-        app:layout_box="all" />
+  <Button
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:layout_gravity="center" />
+   <Button
+       android:layout_width="50dp"
+       android:layout_height="50dp"
+       android:layout_gravity="center"
+       android:backgroundTint="@color/blue"/>
 
 </android.support.wearable.view.BoxInsetLayout>
