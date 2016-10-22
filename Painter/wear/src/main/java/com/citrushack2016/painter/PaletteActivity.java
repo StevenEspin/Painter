@@ -1,10 +1,13 @@
 package com.citrushack2016.painter;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.wearable.activity.WearableActivity;
 import android.support.wearable.view.BoxInsetLayout;
+import android.view.GestureDetector;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageButton;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,8 +19,10 @@ public class PaletteActivity extends WearableActivity {
             new SimpleDateFormat("HH:mm", Locale.US);
 
     private BoxInsetLayout mContainerView;
-    private TextView mTextView;
-    private TextView mClockView;
+
+    protected boolean mPaintingEnabled = true;
+
+    //private GestureDetectorCompat mGestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +30,7 @@ public class PaletteActivity extends WearableActivity {
         setContentView(R.layout.activity_palette);
         setAmbientEnabled();
 
-        mContainerView = (BoxInsetLayout) findViewById(R.id.container);
-        mTextView = (TextView) findViewById(R.id.text);
-        mClockView = (TextView) findViewById(R.id.clock);
+        //mGestureDetector = new GestureDetectorCompat(this, new PaletteOnGestureListener(this));
     }
 
     @Override
@@ -51,14 +54,22 @@ public class PaletteActivity extends WearableActivity {
     private void updateDisplay() {
         if (isAmbient()) {
             mContainerView.setBackgroundColor(getResources().getColor(android.R.color.black));
-            mTextView.setTextColor(getResources().getColor(android.R.color.white));
-            mClockView.setVisibility(View.VISIBLE);
-
-            mClockView.setText(AMBIENT_DATE_FORMAT.format(new Date()));
         } else {
             mContainerView.setBackground(null);
-            mTextView.setTextColor(getResources().getColor(android.R.color.black));
-            mClockView.setVisibility(View.GONE);
+        }
+    }
+
+    public void onClickThicknessButton(View button) {
+        Intent intent = new Intent(this, ThicknessActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickEnableButton(View button) {
+        mPaintingEnabled = !mPaintingEnabled;
+        if(mPaintingEnabled) {
+            ((ImageButton) button).setImageResource(R.drawable.pencil);
+        } else {
+            ((ImageButton) button).setImageResource(R.drawable.pencil_off);
         }
     }
 }

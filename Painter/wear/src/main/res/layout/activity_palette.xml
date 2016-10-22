@@ -8,19 +8,72 @@
     tools:context="com.citrushack2016.painter.PaletteActivity"
     tools:deviceIds="wear">
 
-    <TextView
-        android:id="@+id/text"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_world"
-        app:layout_box="all" />
+        android:id="@+id/palette_controls_layout">
 
-    <TextView
-        android:id="@+id/clock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:textColor="@android:color/white"
-        app:layout_box="all" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/palette_layout"
+            android:layout_centerVertical="true"
+            android:layout_height="50dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/red_button"
+                android:layout_weight="1"
+                style="@android:style/Widget.Material.Button.Borderless"
+                android:background="#ff0000" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/green_button"
+                android:layout_weight="1"
+                android:background="#00ff00" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/blue_button"
+                android:layout_weight="1"
+                android:background="#0000ff" />
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/pencil"
+            android:id="@+id/enable_button"
+            android:layout_gravity="center_horizontal"
+            android:layout_above="@id/palette_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:onClick="onClickEnableButton" />
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/format_line_weight"
+            android:id="@+id/thickness_button"
+            android:layout_below="@+id/palette_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:onClick="onClickThicknessButton" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
+
+    </LinearLayout>
 
 </android.support.wearable.view.BoxInsetLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_thickness"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.citrushack2016.painter.ThicknessActivity"
+    android:gravity="center_vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/thickness_main_layout">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/buttons_layout"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/close_button"
+                android:id="@+id/thick1_button"
+                android:layout_weight="1"
+                style="@android:style/Widget.DeviceDefault.Button.Borderless"
+                android:onClick="onClickThick1Button" />
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/close_button"
+                android:id="@+id/thick2_button"
+                android:layout_weight="1"
+                style="@android:style/Widget.DeviceDefault.Button.Borderless"
+                android:onClick="onClickThick2Button" />
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/close_button"
+                android:id="@+id/thick3_button"
+                android:layout_weight="1"
+                style="@android:style/Widget.DeviceDefault.Button.Borderless"
+                android:onClick="onClickThick3Button" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:id="@+id/arrows_layout"
+            android:clipToPadding="true"
+            android:layout_height="20dp"
+            android:layout_above="@+id/buttons_layout">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/arrow_down_float"
+                android:id="@+id/thick1_arrow"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/arrow_down_float"
+                android:id="@+id/thick2_arrow"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/arrow_down_float"
+                android:id="@+id/thick3_arrow"
+                android:layout_weight="1"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/arrow_left"
+            android:id="@+id/thickness_back_button"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/buttons_layout"
+            android:layout_centerHorizontal="true"
+            android:onClick="onClickThicknessBackButton" />
+    </RelativeLayout>
+
+</RelativeLayout>
