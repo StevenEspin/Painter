@@ -15,38 +15,46 @@ public class CanvasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_canvas);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        //declare the FAB, link it to the layout
+        final FloatingActionButton anchorFAB = (FloatingActionButton) findViewById(R.id.FAB_anchor);//initiates calibration functions for the watch
+        final FloatingActionButton clearFAB = (FloatingActionButton) findViewById(R.id.FAB_clear);//clears the current canvas of points, resets activity to defaults. Does requires new calibration
+        final FloatingActionButton saveFAB = (FloatingActionButton) findViewById(R.id.FAB_save);//takes a snapshot of the current canvas
+
+        FloatingActionButton menuFAB = (FloatingActionButton) findViewById(R.id.FAB_expand_menu);
+        menuFAB.setRippleColor(getResources().getColor(R.color.colorAccentLight));
+        //declare set the onClickListener for the menuFAB via anonymous inner class
+        menuFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                if(anchorFAB.getVisibility() == view.INVISIBLE || clearFAB.getVisibility()==view.INVISIBLE || saveFAB.getVisibility() == view.INVISIBLE) {//if the sub-FABs are hidden, make them visible
+
+                    anchorFAB.setClickable(true);//make the FAB clickable
+                    anchorFAB.show();//show it via animation
+                    anchorFAB.setVisibility(view.VISIBLE);//make sure it is visible
+
+                    clearFAB.setClickable(true);
+                    clearFAB.show();
+                    clearFAB.setVisibility(view.VISIBLE);
+
+                    saveFAB.setClickable(true);
+                    saveFAB.show();
+                    saveFAB.setVisibility(view.VISIBLE);
+                } else { //otherwise, hide them and make them invisible
+                    anchorFAB.setClickable(false);
+                    anchorFAB.hide();
+                    anchorFAB.setVisibility(view.INVISIBLE);
+
+                    clearFAB.setClickable(false);
+                    clearFAB.hide();
+                    clearFAB.setVisibility(view.INVISIBLE);
+
+                    saveFAB.setClickable(true);
+                    saveFAB.hide();
+                    saveFAB.setVisibility(view.INVISIBLE);
+                }
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_canvas, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }
